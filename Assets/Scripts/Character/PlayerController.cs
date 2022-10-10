@@ -8,10 +8,43 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private Joystick joystickMove;
     [SerializeField] private Joystick joystickShoot;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private WeaponData _weaponData;
     private Animator _animator;
     private CharacterController cc;
     private float gravity = -9.8f;
     private IUpdateState currenState;
+    private float shootRateTime = 0;
+    
+    public WeaponData WeaponData
+    {
+        get => _weaponData;
+        set => _weaponData = value;
+    }
+    public float ShootRateTime
+    {
+        get => shootRateTime;
+        set => shootRateTime = value;
+    }
+    
+    public GameObject Bullet
+    {
+        get => bullet;
+        set => bullet = value;
+    }
+
+    public Transform SpawnPoint
+    {
+        get => spawnPoint;
+        set => spawnPoint = value;
+    }
+    public IUpdateState CurrenState
+    {
+        get => currenState;
+        set => currenState = value;
+    }
+
     public Animator _Animator
     {
         get => _animator;
@@ -22,13 +55,14 @@ public class PlayerController : MonoBehaviour
         get => cc;
         set => cc = value;
     }
-
+    
     public float Speed => speed;
     public float RotationSpeed => rotationSpeed;
     public Transform _Camera => _camera;
     public Joystick  JoystickMove => joystickMove;
     public Joystick  JoystickShoot => joystickShoot;
     public float Gravity => gravity;
+
 
     private void Awake()
     {
@@ -40,21 +74,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeState();
-
-        currenState?.UpdateState(this,transform);
+       currenState?.UpdateState(this,transform);
     }
 
-    private void ChangeState()
-    {
-        if (joystickMove.Direction.magnitude == 0 && joystickShoot.Direction.magnitude == 0)
-          currenState = new IdleState();
-        
-        else if (joystickMove.Direction.magnitude != 0)
-            currenState = new RunState();
-        
-        else if (joystickShoot.Direction.magnitude != 0)
-            currenState = new ShootState();
-    }
+   
     
 }

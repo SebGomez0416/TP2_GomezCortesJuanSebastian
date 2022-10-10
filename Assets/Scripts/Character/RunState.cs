@@ -4,7 +4,7 @@ public class RunState : IUpdateState
 {
     public void UpdateState(PlayerController player,Transform p)
     {
-        Debug.Log("ENTRO A AL RUN");
+        
         var ver =  player.JoystickMove.Vertical +Input.GetAxis("Vertical");
         var hor =  player.JoystickMove.Horizontal + Input.GetAxis("Horizontal");
         Vector3 movement=Vector3.zero;
@@ -29,5 +29,11 @@ public class RunState : IUpdateState
 
         movement.y +=  player.Gravity * Time.deltaTime;
         player.Cc.Move(movement);
+        
+        if (player.JoystickShoot.Direction.magnitude != 0)
+            player.CurrenState = new ShootState();
+        
+        else if (player.JoystickMove.Direction.magnitude == 0)
+            player.CurrenState = new IdleState();
     }
 }
