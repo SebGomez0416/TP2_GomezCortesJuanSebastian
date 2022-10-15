@@ -16,7 +16,19 @@ public class PlayerController : MonoBehaviour
     private float gravity = -9.8f;
     private IUpdateState currenState;
     private float shootRateTime = 0;
+    private GameObject weapon;
+    private GameObject sight;
     
+    public GameObject Sight
+    {
+        get => sight;
+        set => sight = value;
+    }
+    public GameObject Weapon
+    {
+        get => weapon;
+        set => weapon = value;
+    }
     public WeaponData WeaponData
     {
         get => _weaponData;
@@ -69,12 +81,19 @@ public class PlayerController : MonoBehaviour
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         currenState = new IdleState();
+        SpawnWeapon();
     }
 
     // Update is called once per frame
     void Update()
     {
        currenState?.UpdateState(this,transform);
+    }
+    private void SpawnWeapon()
+    {
+         weapon = Instantiate(_weaponData.Model, spawnPoint);
+         sight= GameObject.Find("Sight");
+         sight.SetActive(false);
     }
 
    

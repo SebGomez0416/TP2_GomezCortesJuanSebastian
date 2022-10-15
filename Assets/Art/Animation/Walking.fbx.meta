@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7bce3bf2c6696a34a904eb44b36c1d0b
+guid: e882b45d5543e6544928ddf7314b7f4e
 ModelImporter:
   serializedVersion: 20300
   internalIDToNameTable:
@@ -38,15 +38,15 @@ ModelImporter:
       name: mixamo.com
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 12
-      lastFrame: 90
+      firstFrame: 0
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
@@ -366,13 +366,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: characterMedium(Clone)
+    - name: character(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Root
-      parentName: characterMedium(Clone)
+      parentName: character(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
@@ -667,7 +667,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: characterMedium
-      parentName: characterMedium(Clone)
+      parentName: character(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}

@@ -4,7 +4,7 @@ public class ShootState :MonoBehaviour, IUpdateState
 {
     public void UpdateState(PlayerController player,Transform p)
     {
-        Vector3 movement= Vector3.zero;
+       Vector3 movement= Vector3.zero;
        
         player._Animator.SetTrigger("Idle/Shoot");
         var hor =   player.JoystickShoot.Horizontal ;
@@ -14,11 +14,15 @@ public class ShootState :MonoBehaviour, IUpdateState
         if (player.JoystickShoot.Direction.magnitude == 0)
         {
             Shoot(player);
+            player.Sight.SetActive(false);
             player.CurrenState = new IdleState();
         }
         else if (player.JoystickMove.Direction.magnitude != 0)
-            player.CurrenState = new RunState();
-        
+        {
+           player.Sight.SetActive(false);
+           player.Weapon.SetActive(false);
+           player.CurrenState = new RunState();
+        }
 
     }
 
