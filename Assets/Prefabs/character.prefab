@@ -1412,7 +1412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6456953855072712295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.203, y: 2.424, z: 0.698}
+  m_LocalPosition: {x: 0.073, y: 2.424, z: 0.698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9019262993608482204}
@@ -1844,7 +1844,7 @@ GameObject:
   - component: {fileID: 8836170862792112747}
   m_Layer: 0
   m_Name: character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1915,14 +1915,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce116e008bd2c564184f14d6efed9248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 8
   rotationSpeed: 150
   _camera: {fileID: 0}
   joystickMove: {fileID: 0}
   joystickShoot: {fileID: 0}
   bullet: {fileID: 1430753290826065700, guid: 1a146455f70fe744b9dbbf57220145f3, type: 3}
   spawnPoint: {fileID: 5514383776967836520}
-  _weaponData: {fileID: 0}
+  _weaponData: {fileID: 11400000, guid: 6cf96795577a9a248b0b8a489aa14ba6, type: 2}
 --- !u!1 &8668095247290479815
 GameObject:
   m_ObjectHideFlags: 0
