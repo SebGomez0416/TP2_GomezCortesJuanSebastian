@@ -13,11 +13,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponData _weaponData;
     private Animator _animator;
     private CharacterController cc;
-    private float gravity = -9.8f;
     private IUpdateState currenState;
     private float shootRateTime = 0;
     private GameObject weapon;
     private GameObject sight;
+    private int life;
     
     public GameObject Sight
     {
@@ -73,21 +73,24 @@ public class PlayerController : MonoBehaviour
     public Transform _Camera => _camera;
     public Joystick  JoystickMove => joystickMove;
     public Joystick  JoystickShoot => joystickShoot;
-    public float Gravity => gravity;
 
+    public static event Action OnSendDamage;
 
     private void Awake()
     {
+        life = 3;
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         currenState = new IdleState();
         SpawnWeapon();
+        Debug.Log(  cc.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
        currenState?.UpdateState(this,transform);
+       
     }
     private void SpawnWeapon()
     {
@@ -96,6 +99,19 @@ public class PlayerController : MonoBehaviour
          sight.SetActive(false);
     }
 
-   
-    
+    private void OnCollisionEnter(Collision c)
+    {
+        Debug.Log("entro");
+        if (!c.gameObject.CompareTag("Enemy")) return;
+        Debug.Log("enemigo");
+        IsDEAD();
+        OnSendDamage?.Invoke();
+    }
+    private void IsDEAD()
+    {
+        life--;
+        if (life > 0) return;
+        _animator.SetTrigger("Dying");
+        Destroy(gameObject,3.1f);
+    }
 }

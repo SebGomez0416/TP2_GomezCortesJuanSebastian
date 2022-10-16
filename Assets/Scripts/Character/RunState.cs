@@ -26,8 +26,7 @@ public class RunState : IUpdateState
             movement = direction * ( player.Speed * Time.deltaTime);
             p.rotation = Quaternion.Slerp(p.rotation, Quaternion.LookRotation(movement),0.2f);
         }
-
-        movement.y +=  player.Gravity * Time.deltaTime;
+        
         player.Cc.Move(movement);
 
         if (player.JoystickShoot.Direction.magnitude != 0)
@@ -41,6 +40,5 @@ public class RunState : IUpdateState
             player.Weapon.SetActive(true);
             player.CurrenState = new IdleState();
         }
-          
     }
 }

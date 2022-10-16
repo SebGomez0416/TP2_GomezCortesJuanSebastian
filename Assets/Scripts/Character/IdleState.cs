@@ -16,6 +16,5 @@ public class IdleState : IUpdateState
             player.Weapon.SetActive(false);
             player.CurrenState = new RunState();
        }
-            
     }
 }

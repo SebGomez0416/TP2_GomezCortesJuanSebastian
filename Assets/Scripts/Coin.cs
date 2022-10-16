@@ -4,7 +4,6 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     [SerializeField] private float speedRotation;
-
     public static event Action OnSendCoin;
 
     private void Update()

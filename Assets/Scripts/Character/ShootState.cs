@@ -23,7 +23,6 @@ public class ShootState :MonoBehaviour, IUpdateState
            player.Weapon.SetActive(false);
            player.CurrenState = new RunState();
         }
-
     }
 
     private void Shoot(PlayerController p)
