@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private GameObject weapon;
     private GameObject sight;
     private int life;
+    private bool tutorial;
     
     public GameObject Sight
     {
@@ -78,18 +79,33 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        tutorial = true;
         life = 3;
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         currenState = new IdleState();
         SpawnWeapon();
-        Debug.Log(  cc.transform.position);
     }
 
-    // Update is called once per frame
+    private void OnEnable()
+    {
+        ScreenTutorial.OnTutorial += SetTutorial;
+        Tip.OnTutorial += SetTutorial;
+    }
+
+    private void OnDisable()
+    {
+        ScreenTutorial.OnTutorial -= SetTutorial;
+        Tip.OnTutorial -= SetTutorial;
+    }
+
     void Update()
     {
-       currenState?.UpdateState(this,transform);
+        if (tutorial)
+        {
+           _animator.SetTrigger("Idle/Shoot");
+        }
+        else  currenState?.UpdateState(this,transform);
        
     }
     private void SpawnWeapon()
@@ -113,5 +129,10 @@ public class PlayerController : MonoBehaviour
         if (life > 0) return;
         _animator.SetTrigger("Dying");
         Destroy(gameObject,3.1f);
+    }
+
+    private void SetTutorial()
+    {
+        tutorial = !tutorial;
     }
 }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Basic
   cost: 0
-  shootForce: 1500
+  shootForce: 1800
   shootRate: 0.5
   model: {fileID: 3697721944315878391, guid: 223a081f53f406d449998cc8135a6508, type: 3}
