@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour , IDamageable
 {
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour
     private float shootRateTime = 0;
     private GameObject weapon;
     private GameObject sight;
-    private int life;
+    private float life;
    [SerializeField] private bool tutorial;
-    
-    public GameObject Sight
+   private bool isDead;
+
+   public GameObject Sight
     {
         get => sight;
         set => sight = value;
@@ -79,7 +80,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-       life = 3;
+        isDead = false;
+        life = 3;
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         currenState = new IdleState();
@@ -98,12 +100,11 @@ public class PlayerController : MonoBehaviour
         Tip.OnTutorial -= SetTutorial;
     }
 
-    void Update()
+    private void Update()
     {
+        if (isDead) return;
         if (tutorial)
-        {
            _animator.SetTrigger("Idle/Shoot");
-        }
         else  currenState?.UpdateState(this,transform);
        
     }
@@ -113,19 +114,22 @@ public class PlayerController : MonoBehaviour
          sight= GameObject.Find("Sight");
          sight.SetActive(false);
     }
-
-    private void OnCollisionEnter(Collision c)
-    {
-        Debug.Log("entro");
-        if (!c.gameObject.CompareTag("Enemy")) return;
-        Debug.Log("enemigo");
-        IsDEAD();
-        OnSendDamage?.Invoke();
-    }
-    private void IsDEAD()
+    
+    private void IsDead()
     {
         life--;
         if (life > 0) return;
+        _animator.SetTrigger("Dying");
+        Destroy(gameObject,3.1f);
+    }
+    
+    public void TakeDamage(float damage)
+    {
+        life-=damage;
+        OnSendDamage?.Invoke();
+        if (life > 0) return;
+        isDead = true;
+        weapon.SetActive(false);
         _animator.SetTrigger("Dying");
         Destroy(gameObject,3.1f);
     }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,13 +11,11 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private Transform target;
     private NavMeshAgent agent;
     [SerializeField] private bool tutorial;
-    private bool IsDead;
-    
-    
-    
+    private float damage;
+
     private void Awake()
     {
-        IsDead = false;
+        damage = 1;
         _animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -24,9 +23,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     private void Update()
     {
         if (tutorial ) return ;
-        
         agent.SetDestination(target.position);
-
     }
 
     public void TakeDamage(float damage)
@@ -34,7 +31,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         life -= damage;
         if (life <= 0) Die();
     }
-    
+
+    private void Attack()
+    {
+        agent.isStopped = true;
+        _animator.SetTrigger("Attack");
+    }
     private void Die()
     {
         agent.isStopped = true;
@@ -47,4 +49,24 @@ public class EnemyController : MonoBehaviour, IDamageable
     {
         Instantiate(coin,transform.position, transform.rotation);
     }
+
+    private void OnTriggerEnter(Collider o)
+    {
+        if (!o.gameObject.CompareTag("Player")) return;
+        var obj = o.gameObject.GetComponent<IDamageable>();
+        obj?.TakeDamage(damage);
+        Attack();
+    }
+
+    private void OnTriggerExit(Collider o)
+    {
+        if (!o.gameObject.CompareTag("Player")) return;
+        agent.isStopped = false;
+        _animator.SetTrigger("Run");
+    }
+
+   
+
+
+   
 }
