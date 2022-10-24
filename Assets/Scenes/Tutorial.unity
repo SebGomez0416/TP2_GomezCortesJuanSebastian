@@ -5118,6 +5118,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScreenFinish: {fileID: 224305123}
+--- !u!195 &587073359
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587073352}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &588931003
 GameObject:
   m_ObjectHideFlags: 0
@@ -6302,6 +6324,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194228}
     - target: {fileID: 8836170862792112747, guid: 1035098f1f4aff04db2a2afc8e5007ed, type: 3}
+      propertyPath: tutorial
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836170862792112747, guid: 1035098f1f4aff04db2a2afc8e5007ed, type: 3}
       propertyPath: joystickMove
       value: 
       objectReference: {fileID: 1862638768}
@@ -7225,7 +7251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1910055623}
-  offSet: {x: 0, y: 13, z: 10}
+  offSet: {x: 0, y: 22, z: 24}
 --- !u!1 &975604464 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3dc4bef6c02e0ed44a8eac6e4e06684d, type: 3}
@@ -9838,6 +9864,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4307898588025477007, guid: 06737e77576d4b94e8f434eaa932a9e9, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1910055623}
+    - target: {fileID: -4307898588025477007, guid: 06737e77576d4b94e8f434eaa932a9e9, type: 3}
+      propertyPath: tutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6926810850445508456, guid: 06737e77576d4b94e8f434eaa932a9e9, type: 3}
       propertyPath: m_Name
       value: enemy_01

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private GameObject weapon;
     private GameObject sight;
     private int life;
-    private bool tutorial;
+   [SerializeField] private bool tutorial;
     
     public GameObject Sight
     {
@@ -79,8 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        tutorial = true;
-        life = 3;
+       life = 3;
         cc = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         currenState = new IdleState();
