@@ -8,10 +8,16 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private GameObject coin;
     private Animator _animator;
     [SerializeField] private float timeToDestroy;
-    [SerializeField] private Transform target;
+    private Transform target;
     private NavMeshAgent agent;
     [SerializeField] private bool tutorial;
     private float damage;
+    
+    public Transform Target
+    {
+        get => target;
+        set => target = value;
+    }
 
     private void Awake()
     {

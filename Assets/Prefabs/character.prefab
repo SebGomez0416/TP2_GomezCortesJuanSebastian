@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 72330876}
   m_Layer: 0
   m_Name: UI_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 2007366210911005862}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1818,7 +1818,7 @@ GameObject:
   - component: {fileID: 5514383776967836520}
   m_Layer: 0
   m_Name: WeaponSpawn
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1880,7 +1880,7 @@ GameObject:
   - component: {fileID: 1814191044106943084}
   m_Layer: 0
   m_Name: characterMedium
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2344,6 +2344,7 @@ MonoBehaviour:
   bullet: {fileID: 3361318842229043390, guid: 1a146455f70fe744b9dbbf57220145f3, type: 3}
   spawnPoint: {fileID: 5514383776967836520}
   _weaponData: {fileID: 11400000, guid: 6cf96795577a9a248b0b8a489aa14ba6, type: 2}
+  tutorial: 0
 --- !u!136 &1910055624
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2352,7 +2353,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8530111558308349734}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.6157452
   m_Height: 2.3591604
