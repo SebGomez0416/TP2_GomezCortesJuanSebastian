@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -27,5 +28,10 @@ public class UI : MonoBehaviour
     {
         currentCoins++;
         coins.text =""+ currentCoins;
+    }
+
+    public void Skip()
+    {
+        SceneManager.LoadScene("Gameplay");
     }
 }

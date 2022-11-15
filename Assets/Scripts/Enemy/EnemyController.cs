@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,9 +9,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     [SerializeField] private float timeToDestroy;
     private Transform target;
     private NavMeshAgent agent;
-    [SerializeField] private bool tutorial;
     private float damage;
-    
     public Transform Target
     {
         get => target;
@@ -28,7 +25,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (tutorial ) return ;
         agent.SetDestination(target.position);
     }
 
@@ -70,9 +66,4 @@ public class EnemyController : MonoBehaviour, IDamageable
         agent.isStopped = false;
         _animator.SetTrigger("Run");
     }
-
-   
-
-
-   
 }
